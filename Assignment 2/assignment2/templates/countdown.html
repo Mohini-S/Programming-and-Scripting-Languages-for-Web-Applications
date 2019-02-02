@@ -1,0 +1,19 @@
+<!-- # Project 2
+# Mohini Salunke
+# Red ID: 822049248 -->
+
+<!-- Game Release content page. Displays countdown for the next relase of the game, i.e. till Dec 31 2018  -->
+{% extends "layout.html" %}
+
+{% block content %}
+<div class = "container1">
+     <img class = "gameimg" id = "gameimg" src = "static/images/battlefieldsrc.jpeg">
+     <div class = "text-overlay">
+          <p class = "text_overlay1">Deploys Dec 31st on both Android and IOS</p>
+     </div><br><br>
+     <div class="gameRelease" id  = "gameRelease">
+               <p class = "row-timer" id = "row-timer"></p>{{ timeLeft }}
+               <p class = "row-timer1" id = "row-timer1"> Days Hours Minutes Seconds</p>
+</div></div>
+
+{% endblock %}

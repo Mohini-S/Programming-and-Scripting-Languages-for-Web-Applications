@@ -1,0 +1,13 @@
+{# <!-- 
+# Project 3
+# Mohini Salunke
+# Red ID: 822049248 -->
+<!-- Display error --> #}
+
+{% extends 'layout.twig' %}
+
+{% block body %}
+  <h1>{{message}}</h1>
+  <h2>{{error.status}}</h2>
+  <pre>{{error.stack}}</pre>
+{% endblock %}

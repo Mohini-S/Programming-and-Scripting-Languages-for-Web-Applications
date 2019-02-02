@@ -1,0 +1,15 @@
+# Project 3
+# Mohini Salunke
+# Red Id: 822049248
+
+FROM node:latest 
+# Create app directory 
+WORKDIR /usr/src/app 
+# Install app dependencies 
+# A wildcard is used to ensure both package .json AND package-lock. jsc 
+# where available (npm@5+) 
+COPY package*.json ./ 
+RUN npm install 
+COPY . .
+EXPOSE 8080
+CMD ["npm" , " start " ]

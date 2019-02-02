@@ -1,0 +1,42 @@
+# Project 2
+# Mohini Salunke
+# Red ID: 822049248
+
+# Docker Compose file
+version: '3'
+services:
+  # Flask service
+  web:
+    build: ./assignment2
+    container_name: "assignment2"
+    ports:
+      - "5000:5000"
+    volumes:
+      - /assignment2:/code
+    links:
+      - db
+
+  # Nginx service
+  server:
+    build:
+      context: .
+      dockerfile: ./nginx/Dockerfile
+    container_name: server
+    ports:
+      - "80:80"
+
+  # mysql service
+  db:
+    image: mariadb:10.3
+    container_name: "mdb"
+    restart: always
+    environment:
+      - MYSQL_ROOT_PASSWORD=toor
+      - MYSQL_ALLOW_EMPTY_PASSWORD  #Allows empty password
+      - MYSQL_USER=agsroot
+      - MYSQL_PASSWORD=ags
+    ports:
+      - "9906:3306"
+    volumes:
+      - ./data:/docker-entrypoint-initdb.d/:ro
+    command: mysqld --innodb-flush-method=O_DSYNC

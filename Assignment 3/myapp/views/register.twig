@@ -1,0 +1,113 @@
+{# 
+<!-- Registration page content  -->
+ 
+# Project 3
+# Mohini Salunke
+# Red ID: 822049248
+
+ <!-- Registration form --> #}
+{% extends 'layout.twig' %}
+{% block content %}
+<div class="container">
+<h1> Register</h1>
+<p>Please fill in this form to create an account.</p>
+<hr>
+
+     <form 
+     name="personal_info"
+     id="register"
+     enctype="multipart/form-data"
+     method="POST"
+     action="/register">
+
+     <!-- ROW 1 with first and last name 6 each-->
+          <div class="row ">
+               <div class="form-group col-md-6">
+                    <label for="fname">First Name<span>*</span></label>
+                    <input class="form-control required" type="text" name="fname"  id="fname" size="25" />
+                    <span>Please Enter Your First Name</span>
+               </div>
+                    <div class="form-group col-md-6">
+                    <label for="lname">Last Name<span>*</span></label>
+                    <input class="form-control required" type="text" name="lname"  id="lname" size="25" />
+                    <span>Please Enter Your Last Name</span>
+               </div>
+          </div>
+
+
+               <div class="row ">
+                    <div class="form-group col-md-6">
+                         <label for="email">Email<span>*</span></label>
+                         <input class="form-control required" type="text" name="email"  id="email" />
+                         <span class="duplicateEmail">Email already registered</span>
+                         <span class="invalidEmail">Please Enter a valid Email</span>
+                    </div>
+                    <div class="form-group col-md-6">
+                         <label for="uname">User Name<span>*</span></label>
+                         <input class="form-control required" type="text" name="uname"  id="uname" />
+                         <span class="duplicateUname">User Name already registered</span>
+                    </div>
+               </div>
+               <div class="row ">
+                    <div class="form-group col-md-6">
+                         <label for="dob">Date of Birth<span>*</span></label>
+                         <input class="form-control required" type="date" name="dob"  id="dob" size="25" placeholder="DD/MM/YYYY" />
+                         <span>Please Enter Your Date of Birth</span>
+                         <span class="invalidDob">DOB should be in the format MM/DD/YYYY</span>
+                    </div>
+                    <div class="form-group col-md-6">
+                    <label for="favouriteGame">Favourite Game<span>*</span></label>
+                    <input class="form-control required" type="text" name="favouriteGame"  id="favouriteGame" size="25" />
+                    <span>Please Enter Your Favourite Game</span>
+               </div>
+               </div>
+
+               <div class="row ">
+                    <div class="form-group col-md-6">
+                         <label for="phone">Phone<span>*</span></label>
+                         <input class="form-control  required" type="text" name="phone" id="phone" minlength ="14" maxlength="14" placeholder="(###)-###-####" />
+                         <span>Please Enter Your Phone Number</span>
+                         <span class="invalidPhone">Please Enter Phone Number in the format (###)-###-####</span>
+                    </div>
+                    <div class="form-group col-md-6">
+                         <label for="phoneType">Phone Type<span>*</span></label>
+                         <select class="form-control requiredDropDown" name="phoneType" id="phoneType"  data-live-search="true" >
+                              <option value="" >Select Phone Type</option>
+                              <option value="Android">Android</option>
+                              <option value="IOS">IOS</option>
+                         </select >
+                         <span>Please Select Phone Type</span>
+                    </div>
+               </div>
+
+
+               <div class="row ">
+                    <div class="form-group col-md-6">
+                         <label for="password">Password<span>*</span></label>
+                         <input class="form-control required" type="password" name="password"  id="password" size="25" />
+                         <span>Please Enter the password</span>
+                    </div>
+                    <div class="form-group col-md-6">
+                         <label for="cpassword">Confirm Password<span>*</span></label>
+                         <input class="form-control required" type="password" name="cpassword"  id="cpassword" size="25" />
+                         <span class = "passwordmismatch">Please Enter same password</span>
+                    </div>
+               </div>
+
+               <div class="row">
+                    <!--<div  class="form-group col-md-6"></div> -->
+                    <div  class="form-group col-md-6">
+                         <input class="form-control btn btn-danger" type="reset" value="Clear Data" id="reset"/>
+                    </div>
+                    <div class="form-group col-md-6">
+                         <button type="submit" class="form-control btn btn-success">Submit</button>
+                    </div>
+               </div>
+          </div>
+     </form>
+</div>
+
+<div class ="successContainer">
+     <p class = "onSuccess">Hello</p>
+</div>
+{% endblock %}

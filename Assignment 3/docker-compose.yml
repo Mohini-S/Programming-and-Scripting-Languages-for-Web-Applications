@@ -1,0 +1,38 @@
+# Project 3
+# Mohini Salunke
+# Red ID: 822049248
+
+version: '3' 
+services: 
+
+    # NodeJS service
+    web: 
+      build: ./myapp
+      container_name: "p3app"
+      ports: 
+        - "80:3000" 
+      volumes: 
+        - ./myapp:/usr/arc/app #binding host directory to container directory
+      depends_on:
+        - db
+      links:
+        - db:db
+      environment:
+        - DATABASE_HOST=db
+      command: ["./wait-for-it.sh", "db:3306", "--", "npm", "start"]
+  
+    # mysql service
+    db:
+      image: mariadb:10.3
+      container_name: "ags_db"
+      restart: always
+      environment:
+       - MYSQL_ROOT_PASSWORD=toor
+       - MYSQL_ALLOW_EMPTY_PASSWORD  # necessary for root connections
+       - MYSQL_USER=agsroot
+       - MYSQL_PASSWORD=ags
+      ports:
+       - "9906:3306"
+      volumes:
+       - ./myapp/data:/docker-entrypoint-initdb.d/:ro
+      command: mysqld --innodb-flush-method=O_DSYNC #pass the config through the command
